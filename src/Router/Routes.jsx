@@ -4,8 +4,8 @@ import {
 import Root from "../layout/Root";
 import ErrorPage from "../pages/ErrorPage"
 import Home from "../pages/Home";
-import SignOut from "../pages/SignOut"
-import SignIn from "../pages/SignIn";
+import Register from "../pages/SignOut"
+import LogIn from "../pages/LogIn";
 import AllArtAndCraft from "../pages/AllArtAndCraft";
 
 const router = createBrowserRouter([
@@ -24,11 +24,11 @@ const router = createBrowserRouter([
             },
             {
                 path: "/login",
-                element: <SignIn />,
+                element: <LogIn />,
             },
             {
                 path: "/register",
-                element: <SignOut />,
+                element: <Register />,
             },
         ],
     },

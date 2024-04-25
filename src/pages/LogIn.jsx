@@ -7,7 +7,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash} from "react-icons/fa";
 // import { toast } from 'react-toastify'; // Import react-toastify
 
-const SignIn = () => {
+const LogIn = () => {
     const [showPassword, setShowPassword] = useState(false);
     // const { signInUser, googleLogIn, githubLogIn } = useContext(AuthContext);
     // const location = useLocation();
@@ -103,4 +103,4 @@ const SignIn = () => {
     );
 };
 
-export default SignIn;
+export default LogIn;
