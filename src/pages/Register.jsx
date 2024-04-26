@@ -3,11 +3,12 @@ import { AuthContext } from '../provider/AuthContextProvider';
 import { useForm } from "react-hook-form"
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { toast } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { useContext, useRef, useState } from 'react';
 
 const Register = () => {
-    const { createUser} = useContext(AuthContext);
+    const { createUser,logOut} = useContext(AuthContext);
     const location = useLocation();
     const navigate = useNavigate();
     const formRef = useRef(null);
@@ -18,29 +19,32 @@ const Register = () => {
     const handleRegister = (data) => {
         const { email, password, fullName, photoUrl } = data;
 
-        if (!/^(?=.*[A-Z])(?=.*[a-z]).{6,}$/.test(passwordRequired)) {
+        if (!/^(?=.*[A-Z])(?=.*[a-z]).{6,}$/.test(password)) {
             toast.error("Please provide a valid password.");
             return;
         }
 
         createUser(email, password)
-            .then((userCredencial) => {
-                // updateUserProfile(fullNameRequired, photoUrlRequired)
-                //     .then(() => {
-                //         toast.success("User registered successfully");
-                //         logOutUser()
-                //             .then(() => {
-                //                 navigate("/login");
-                //             })
-                //         navigate(location?.state ? location.state : "/");
-                //         formRef.current.reset();
-                //     })
-                //     .catch((error) => {
-                //         console.log(error);
-                //         toast.error("Error updating user profile");
-                //     });
-                console.log(userCredencial);
-            })
+        .then(() => {
+            toast.success("User registered successfully");
+        })
+            // .then((userCredencial) => {
+            //     updateUserProfile(fullName, photoUrl)
+            //         .then(() => {
+            //             toast.success("User registered successfully");
+            //             logOut()
+            //                 .then(() => {
+            //                     navigate("/login");
+            //                 })
+            //             navigate(location?.state ? location.state : "/");
+            //             formRef.current.reset();
+            //         })
+            //         .catch((error) => {
+            //             console.log(error);
+            //             toast.error("Error updating user profile");
+            //         });
+            //     console.log(userCredencial);
+            // })
             .catch((error) => {
                 console.log(error);
                 toast.error(error.message);
@@ -53,6 +57,7 @@ const Register = () => {
                 <title>HospitalityHub | Register </title>
             </Helmet> */}
             <div className="card shrink-0 w-full max-w-sm my-2 md:my-5 shadow-2xl bg-[#71707080]">
+                <ToastContainer/>
                 <form ref={formRef} onSubmit={handleSubmit(handleRegister)} className="card-body p-4">
                     <div className="form-control">
                         <label className="label">

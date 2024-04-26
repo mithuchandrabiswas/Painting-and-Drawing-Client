@@ -8,6 +8,9 @@ import Home from "../pages/Home";
 import AllArtAndCraft from "../pages/AllArtAndCraft";
 import Register from "../pages/Register";
 import LogIn from "../pages/LogIn";
+import AddCraftItem from "../pages/AddCraftItem";
+import PrivateRoutes from "./PrivateRoutes";
+import MyArtAndCraft from "../pages/MyArtAndCraft";
 // import Register from "../pages/Register";
 
 const router = createBrowserRouter([
@@ -23,6 +26,14 @@ const router = createBrowserRouter([
             {
                 path: "/allart&craft",
                 element: <AllArtAndCraft />,
+            },
+            {
+                path: "/addcraft",
+                element: <PrivateRoutes><AddCraftItem /></PrivateRoutes>,
+            },
+            {
+                path: "/myart&craft",
+                element: <PrivateRoutes><MyArtAndCraft /></PrivateRoutes>,
             },
             {
                 path: "/login",
