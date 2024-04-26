@@ -4,9 +4,11 @@ import {
 import Root from "../layout/Root";
 import ErrorPage from "../pages/ErrorPage"
 import Home from "../pages/Home";
-import Register from "../pages/SignOut"
-import LogIn from "../pages/LogIn";
+// import LogIn from "../pages/LogIn";
 import AllArtAndCraft from "../pages/AllArtAndCraft";
+import Register from "../pages/Register";
+import LogIn from "../pages/LogIn";
+// import Register from "../pages/Register";
 
 const router = createBrowserRouter([
     {
@@ -28,7 +30,7 @@ const router = createBrowserRouter([
             },
             {
                 path: "/register",
-                element: <Register />,
+                element: <Register/>,
             },
         ],
     },

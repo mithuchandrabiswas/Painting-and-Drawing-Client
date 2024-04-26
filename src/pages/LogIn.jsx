@@ -1,63 +1,61 @@
-import { FaGithub, FaGoogle } from "react-icons/fa";
 import { useContext, useState } from "react";
-// import { AuthContext } from "../../provider/AuthProvider";
 import { useForm } from "react-hook-form"
-// import { Helmet } from "react-helmet-async";
+import { Helmet } from "react-helmet-async";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { FaEye, FaEyeSlash} from "react-icons/fa";
-// import { toast } from 'react-toastify'; // Import react-toastify
+import { FaEye, FaEyeSlash, FaGithub } from "react-icons/fa";
+import { toast } from 'react-toastify'; // Import react-toastify
+import { FaGoogle } from "react-icons/fa6";
+import { AuthContext } from "../provider/AuthContextProvider";
 
 const LogIn = () => {
     const [showPassword, setShowPassword] = useState(false);
-    // const { signInUser, googleLogIn, githubLogIn } = useContext(AuthContext);
-    // const location = useLocation();
-    // const navigate = useNavigate();
+    const { signInUser, googleLogIn, githubLogIn } = useContext(AuthContext);
+    const location = useLocation();
+    const navigate = useNavigate();
     // console.log(user);
     const { register, handleSubmit, formState: { errors }, } = useForm();
 
     const handleLogIn = (data) => {
         console.log(data) // watch input value by passing the name of it
-        // signInUser(data.emailRequired, data.passwordRequired)
-        //     .then(() => {
-        //         toast.success("User Log in Successfully");
-        //         // Navigate after log in
-        //         navigate(location?.state ? location.state : "/");
-        //     })
-        //     .catch((error) => {
-        //         console.log(error);
-        //         toast.error("Email or Password are don't match. Please check your email & password");
-        //     })
+        signInUser(data.emailRequired, data.passwordRequired)
+            .then(() => {
+                toast.success("User Log in Successfully");
+                // Navigate after log in
+                navigate(location?.state ? location.state : "/");
+            })
+            .catch((error) => {
+                console.log(error);
+                toast.error("Email or Password are don't match. Please check your email & password");
+            })
     }
 
     // Google Sign In
     const handleGoogleLogIn = () => {
-        // googleLogIn()
-        //     .then(() => {
-        //         toast.success("User sign in by Google");
-        //         navigate(location?.state ? location.state : "/");
+        googleLogIn()
+            .then(() => {
+                toast.success("User sign in by Google");
+                navigate(location?.state ? location.state : "/");
 
-        //     })
-        //     .catch((error) => {
-        //         console.log(error);
-        //         toast.error("Google Sign In Failed");
-        //     })
+            })
+            .catch((error) => {
+                console.log(error);
+                toast.error("Google Sign In Failed");
+            })
     }
 
     // Github Sign In
     const handleGithubLogIn = () => {
-        // githubLogIn()
-        //     .then(() => {
-        //         toast.success("User sign in by Github");
-        //         navigate(location?.state ? location.state : "/");
+        githubLogIn()
+            .then(() => {
+                toast.success("User sign in by Github");
+                navigate(location?.state ? location.state : "/");
 
-        //     })
-        //     .catch((error) => {
-        //         console.log(error);
-        //         toast.error("Github Sign In Failed");
-        //     })
+            })
+            .catch((error) => {
+                console.log(error);
+                toast.error("Github Sign In Failed");
+            })
     }
-
-
 
     return (
         <div className="hero  sm:bg-[url('https://i.ibb.co/K9RgMvV/tierra-mallorca-rg-J1-J8-SDEAY-unsplash.jpg')] bg-cover">
@@ -70,18 +68,18 @@ const LogIn = () => {
                         <label className="label">
                             <span className="label-text">Email</span>
                         </label>
-                        <input  {...register("emailRequired", { required: true })} type="email" placeholder="Input your email..." className="input input-bordered" />
-                        {errors.emailRequired && <span className="text-red-500">This field is required</span>}
+                        <input  {...register("emailRequired", { required: true })} type="email" placeholder="Input your email..." className="input input-sm input-bordered" />
+                        {errors.email && <span className="text-red-500 text-xs">This field is required</span>}
                     </div>
                     <div className="form-control relative">
                         <label className="label">
                             <span className="label-text">Password</span>
                         </label>
-                        <input {...register("passwordRequired", { required: true })} type={showPassword ? 'text' : 'password'} placeholder="type your password..." className="input input-bordered" />
+                        <input {...register("passwordRequired", { required: true })} type={showPassword ? 'text' : 'password'} placeholder="type your password..." className="input input-sm input-bordered" />
                         <span className="absolute top-2/3 right-2" onClick={() => setShowPassword(!showPassword)}> {
                             showPassword ? <FaEye /> : <FaEyeSlash />
                         } </span>
-                        {errors.passwordRequired && <span className="text-red-500">This field is required</span>}
+                        {errors.password && <span className="text-red-500 text-xs">This field is required</span>}
                     </div>
                     <div className="form-control mt-6">
                         <button className="btn btn-primary">Log In</button>
@@ -95,6 +93,7 @@ const LogIn = () => {
                     <h1 className="text-center text-sky-400 font-semibold"> Sign In With: </h1>
                 </form>
                 <div className="flex flex-col md:flex-row gap-2 justify-center mb-2">
+                    
                     <button onClick={handleGoogleLogIn} className="btn btn-sm btn-outline md:text-white"> <FaGoogle></FaGoogle> Google </button>
                     <button onClick={handleGithubLogIn} className="btn btn-sm btn-outline md:text-white"> <FaGithub></FaGithub> Github </button>
                 </div>
