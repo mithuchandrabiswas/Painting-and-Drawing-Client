@@ -69,7 +69,7 @@ const NavBar = () => {
                         </li>
                     </ul>
                 </div>
-                <Link to={"/"} className="text-md md:text-xl font-bold text-cyan-600">Hospitality<span className="text-amber-400">Hub</span>
+                <Link to={"/"} className="text-md md:text-xl font-bold text-cyan-600">H<span className="text-amber-400">Hub</span>
                 </Link>
             </div>
             <div className="navbar-center hidden lg:flex">
