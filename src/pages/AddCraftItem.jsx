@@ -1,12 +1,13 @@
 
 import { useContext, useState } from "react";
 import { AuthContext } from "../provider/AuthContextProvider";
+import Swal from 'sweetalert2';
 
 const AddCraftItem = () => {
     const { user } = useContext(AuthContext)
     const [customizationValue, setCustomizationValue] = useState(null);
     const [subCategoryValue, setSubCategoryValue] = useState(null);
-    const [stockStatusValue,setStockStatusValue] = useState(null);
+    const [stockStatusValue, setStockStatusValue] = useState(null);
 
     const handleAddCraft = (e) => {
         e.preventDefault();
@@ -23,10 +24,32 @@ const AddCraftItem = () => {
         const email = form.email.value;
         const userName = form.user_name.value;
 
-        const addCraftData = {image,craftName,subCategory,shortDescription,price,rating,customization,processingTime,stockStatus,email,userName}
-        console.log(addCraftData);
-        console.log(typeof addCraftData.price);
+        const newCraftData = { image, craftName, subCategory, shortDescription, price, rating, customization, processingTime, stockStatus, email, userName }
+        console.log(newCraftData);
+
+        // Send CraftData to the server
+        fetch('https://painting-and-drawing-server.vercel.app/addcrafts', {
+            method: 'POST',
+            headers: {
+                'content-type':'application/json'
+            },
+            body: JSON.stringify(newCraftData),
+        })
+        .then(res => res.json())
+        .then((data) => {
+            console.log(data);
+            if(data.insertedId) {
+                Swal.fire({
+                    title: 'Suceess',
+                    text: 'Crafts added successfully',
+                    icon: 'success',
+                    confirmButtonText: 'Cool'
+                  });
+                  form.reset();
+            }
+        })
     }
+
 
     // OnChange Function
     const customizationChange = (e) => {

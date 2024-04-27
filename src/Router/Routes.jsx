@@ -26,6 +26,7 @@ const router = createBrowserRouter([
             {
                 path: "/allart&craft",
                 element: <AllArtAndCraft />,
+                loader: () => fetch('https://painting-and-drawing-server.vercel.app/addcrafts'),
             },
             {
                 path: "/addcraft",
