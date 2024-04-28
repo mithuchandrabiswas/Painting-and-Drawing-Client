@@ -98,12 +98,12 @@ const AddCraftItem = () => {
                             </label>
                             <select onChange={subCategoryChange} name="sub_category" id="" className="px-2 py-1 rounded-md">
                                 <option value="">Select your sub-category</option>
-                                <option value="Wooden Furniture & Sculptures">Wooden Furniture & Sculptures</option>
-                                <option value="Wooden Home Decor">Wooden Home Decor</option>
-                                <option value="Wooden Utensils and Kitchenware">Wooden Utensils and Kitchenware</option>
-                                <option value="Jute Home Decor">Jute Home Decor</option>
-                                <option value="Jute Kitchenware & utensils">Jute Kitchenware & utensils</option>
-                                <option value="Jute and wooden jewellery">Jute and wooden jewellery</option>
+                                <option value="Landscape Painting">Landscape Painting</option>
+                                <option value="Portrait Drawing">Portrait Drawing</option>
+                                <option value="Watercolour Painting">Watercolour Painting</option>
+                                <option value="Oil Painting">Oil Painting</option>
+                                <option value="Charcoal Sketching">Charcoal Sketching</option>
+                                <option value="Cartoon Drawing">Cartoon Drawing</option>
                             </select>
                         </div>
                         <div className="form-control w-full md:w-1/2">
