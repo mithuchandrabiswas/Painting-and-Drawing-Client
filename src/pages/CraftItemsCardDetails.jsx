@@ -4,10 +4,12 @@ import { useLoaderData, useParams } from "react-router-dom";
 const CraftItemsCardDetails = () => {
     const allCraft = useLoaderData();
     const { id } = useParams();
-    console.log(allCraft);
+    // console.log(allCraft);
+
+    // find Method Use for achive singleCraft
     const singleCraft = allCraft.find(item => item._id == id);
     const { _id, image, craftName, subCategory, shortDescription, price, rating, customization, processingTime, stockStatus, email, userName } = singleCraft;
-    console.log(singleCraft);
+    // console.log(singleCraft);
     return (
         <div className="py-4 px-2 flex flex-col md:flex-row bg-red-50">
             {/* <Helmet>

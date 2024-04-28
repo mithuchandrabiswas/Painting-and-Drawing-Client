@@ -4,10 +4,10 @@ import AllArtAndCraftCardDetails from "../pages/AllArtAndCraftCardDetails";
 
 const AllArtAndCraftCard = ({ singleCraft }) => {
     const { _id, image, craftName, subCategory, shortDescription, price, rating, customization, processingTime, stockStatus, email, userName } = singleCraft;
-    console.log(singleCraft);
+    // console.log(singleCraft);
 
     const handleAllViewDetails = (singleCraft) => {
-        console.log(singleCraft);
+        // console.log(singleCraft);
     }
     return (
         <div className="shadow-sm space-y-1 py-4 px-2 border">

@@ -12,7 +12,7 @@ import AllArtAndCraftCardDetails from "../pages/AllArtAndCraftCardDetails";
 import MyArtAndCraftCardDetails from "../pages/MyArtAndCraftCardDetails";
 import CraftItemsCardDetails from "../pages/CraftItemsCardDetails";
 import ArtAndCraftCategoriesPage from "../pages/ArtAndCraftCategoriesPage";
-// import Register from "../pages/Register";
+import ArtAndCraftCategoriesCardDetails from "../pages/ArtAndCraftCategoriesCardDetails";
 
 const router = createBrowserRouter([
     {
@@ -27,6 +27,11 @@ const router = createBrowserRouter([
             {
                 path: "/Sub/:subcategory_Name",
                 element: <ArtAndCraftCategoriesPage />,
+                loader: () => fetch('https://painting-and-drawing-server.vercel.app/addcrafts'),
+            },
+            {
+                path: "/artAndCraftCategoriesCardDetails/:id",
+                element: <ArtAndCraftCategoriesCardDetails />,
                 loader: () => fetch('https://painting-and-drawing-server.vercel.app/addcrafts'),
             },
             {

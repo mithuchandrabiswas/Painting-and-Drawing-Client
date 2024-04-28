@@ -4,12 +4,12 @@ import ArtAndCraftCategoriesCard from '../components/ArtAndCraftCategoriesCard';
 const ArtAndCraftCategoriesPage = () => {
     const loadedData = useLoaderData();
     const { subcategory_Name } = useParams();
-    console.log(loadedData);
-    console.log(subcategory_Name);
+    // console.log(loadedData);
+    // console.log(subcategory_Name);
 
 
     const allFilteredCategoriesData = loadedData?.filter(item => item.subCategory === subcategory_Name);
-    console.log('Matching Data', allFilteredCategoriesData);
+    // console.log('Matching Data', allFilteredCategoriesData);
 
     return (
         <div>
