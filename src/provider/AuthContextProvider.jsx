@@ -53,7 +53,7 @@ const AuthContextProvider = ({ children }) => {
     }, [])
 
 
-    const authInfo = { user, setUser, loading, createUser, signInUser, logOut, googleLogIn, githubLogIn }
+    const authInfo = { user, setUser, loading,setLoading, createUser, signInUser, logOut, googleLogIn, githubLogIn }
 
 
     return (

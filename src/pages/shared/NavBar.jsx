@@ -20,11 +20,11 @@ const NavBar = () => {
     const navLinks = (
         <>
             <li><NavLink to={"/"}>Home</NavLink></li>
-            <li><NavLink to={"/allart&craft"}>All Art & Craft Items</NavLink></li>
+            <li><NavLink to={"/allart&craft"}>All Art & Craft</NavLink></li>
             {user && (
                 <>
-                    <li><NavLink to={"/addcraft"}>Add Craft Item</NavLink></li>
-                    <li><NavLink to={"/myart&craft"}>My Art & Craft List</NavLink></li>
+                    <li><NavLink to={"/addcraft"}>Add Craft</NavLink></li>
+                    <li><NavLink to={"/myart&craft"}>My Art & Craft</NavLink></li>
                 </>
             )}
         </>
@@ -73,7 +73,7 @@ const NavBar = () => {
                 </Link>
             </div>
             <div className="navbar-center hidden lg:flex">
-                <ul className="menu menu-horizontal px-1">
+                <ul className="menu menu-horizontal px-1 gap-x-2">
                     {navLinks}
                 </ul>
             </div>

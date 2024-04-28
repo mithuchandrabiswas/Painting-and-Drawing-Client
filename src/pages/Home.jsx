@@ -1,8 +1,11 @@
 
-import ArtAndCategorySection from "../components/ArtAndCategorySection";
+import ArtAndCategorySection from "../components/ArtAndCraftCategoriesSection";
 import CraftItemsSection from "../components/CraftItemsSection";
 
+
 const Home = () => {
+
+
     return (
         <div>
             <h1>Home Pages</h1>

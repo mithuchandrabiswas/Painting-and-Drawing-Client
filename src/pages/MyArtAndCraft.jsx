@@ -1,4 +1,4 @@
-import {useContext, useState } from "react";
+import {useContext, useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import MyArtAndCraftCard from "../components/MyArtAndCraftCard";
 import { AuthContext } from "../provider/AuthContextProvider";
@@ -7,9 +7,12 @@ const MyArtAndCraft = () => {
     const {user} = useContext(AuthContext);
     const loadedCrafts = useLoaderData();
     const [allCraft,setAllCraft] = useState(loadedCrafts)
+
+
     // console.log(loadedCrafts);
     const filteredMyCrafts = allCraft.filter(singleCraft => singleCraft.email == user.email);
     console.log(filteredMyCrafts);
+
     return (
         <div>
             <h1>All Art And craft: {filteredMyCrafts.length}</h1>

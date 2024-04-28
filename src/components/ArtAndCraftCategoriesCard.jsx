@@ -1,12 +1,11 @@
 import { CiLocationOn } from "react-icons/ci";
 import { Link } from "react-router-dom";
-import CraftItemsCardDetails from "../pages/CraftItemsCardDetails";
-
-const CraftItemsSectionCard = ({ singleCraft }) => {
-    const { _id, image, craftName, subCategory, shortDescription, price, rating, customization, processingTime, stockStatus, email, userName } = singleCraft;
+import ArtAndCraftCategoriesCardDetails from "../pages/ArtAndCraftCategoriesCardDetails";
+const ArtAndCraftCategoriesCard = ({singleCategoryData}) => {
+    const { _id, image, craftName, subCategory, shortDescription, price, rating, customization, processingTime, stockStatus, email, userName } = singleCategoryData;
     // console.log(singleCraft);
 
-    const handleAllViewDetails = (singleCraft) => {
+    const handleAllViewDetails = (singleCategoryData) => {
         // console.log(singleCraft);
     }
     return (
@@ -22,9 +21,9 @@ const CraftItemsSectionCard = ({ singleCraft }) => {
                 <p className="text-sm">{userName}</p>
                 <p className="text-red-600 text-sm">{price} <span className="text-xs text-gray-300">(Include all)</span></p>
             </div>
-            <Link to={`/crafitemstdetails/${_id}`} onClick={() => handleAllViewDetails(singleCraft)} CardDetails={<CraftItemsCardDetails singleCraft={singleCraft}></CraftItemsCardDetails>} className="btn btn-sm btn-secondary w-full">View Details</Link>
+            <Link to={`/crafitemstdetails/${_id}`} onClick={() => handleAllViewDetails(singleCategoryData)} CardDetails={<ArtAndCraftCategoriesCardDetails singleCategoryData={singleCategoryData}></ArtAndCraftCategoriesCardDetails>} className="btn btn-sm btn-secondary w-full">View Details</Link>
         </div>
     );
 };
 
-export default CraftItemsSectionCard;
+export default ArtAndCraftCategoriesCard;
