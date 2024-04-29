@@ -1,20 +1,12 @@
-import { useState } from "react";
-import { CiLocationOn } from "react-icons/ci";
-// import MyArtAndCraftCardDetails from "../pages/MyArtAndCraftCardDetails";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
-import MyArtAndCraftCardDetails from "../pages/MyArtAndCraftCardDetails";
+import { MdOutlinePriceChange } from "react-icons/md";
+import { AiFillLike } from "react-icons/ai";
 
 
 const MyArtAndCraftCard = ({ singleCraft, crafts, setCrafts }) => {
-    const { _id, image, craftName, subCategory, shortDescription, price, rating, customization, processingTime, stockStatus, email, userName } = singleCraft;
+    const { _id, image, craftName, subCategory,price, rating, stockStatus} = singleCraft;
     // console.log(singleCraft);
-
-    // const [crafts,setCrafts] = useState([])
-
-    // const handleAllViewDetails = (singleCraft) => {
-    //     // console.log(singleCraft);
-    // }
 
     const handleDelete = (id) => {
         console.log(id);
@@ -41,7 +33,7 @@ const MyArtAndCraftCard = ({ singleCraft, crafts, setCrafts }) => {
                                 text: "Your craft has been deleted.",
                                 icon: "success"
                             })
-                            const remaining = crafts.filter(craft => singleCraft._id !== _id);
+                            const remaining = crafts.filter(craft => craft._id !== _id);
                             setCrafts(remaining);
 
                         } else {
@@ -56,25 +48,28 @@ const MyArtAndCraftCard = ({ singleCraft, crafts, setCrafts }) => {
         <div className="shadow-sm space-y-1 py-4 px-2 border">
             <div className="relative">
                 <img className="rounded w-full h-[40vh]" src={image} alt="" />
-                <span className="absolute top-1 right-2 text-red-500 bg-slate-50 px-2 rounded-md">{stockStatus}</span>
+                <span className="absolute top-1 right-2 text-red-500 bg-slate-50 px-2 rounded-md text-xs">{stockStatus}</span>
             </div>
             <div className="pl-2 pt-1 text-left  rounded-md space-y-2">
-                <button className="text-red-600">{subCategory}</button>
-                <h3 className="text-sm md:text-lg font-bold">{craftName}</h3>
-                <p className="flex items-center gap-1 text-xs text-gray-600"> <CiLocationOn className="text-red-400 text-lg md:text-base"> </CiLocationOn> {rating}</p>
-                <p className="text-sm">{userName}</p>
-                <p className="text-red-600 text-sm">{price} <span className="text-xs text-gray-300">(Include all)</span></p>
+                <button className="text-red-600 text-xs lg:text-lg text-left">{subCategory}</button>
+                <h3 className="text-sm md:text-md font-bold">{craftName}</h3>
+                <div className="flex justify-between">
+                    <p className="flex items-center gap-1 text-xs text-gray-600">  <AiFillLike /> {rating}</p>
+                    <p className="flex items-center gap-1 text-xs text-gray-600"><MdOutlinePriceChange />${price}</p>
+                </div>
             </div>
-            
-            <div className="flex justify-between">
+
+            <div className="grid grid-cols-1 md:grid-cols-3 justify-between items-center gap-1 h-10">
                 <Link to={`/myartandcraftdetails/${_id}`}>
-                    <button className="btn btn-xs join-item">View Details</button>
+                    <button className="btn btn-xs btn-outline w-full text-xs h-full">View Details</button>
                 </Link>
                 <Link to={`/updatecraft/${_id}`}>
-                    <button className="btn btn-xs join-item">Update</button>
+                    <button className="btn btn-xs btn-outline w-full">Update</button>
                 </Link>
 
-                <button onClick={() => handleDelete(_id)} className="btn btn-xs join-item">Delete</button>
+                <Link>
+                    <button onClick={() => handleDelete(_id)} className="btn btn-xs btn-outline w-full">Delete</button>
+                </Link>
             </div>
         </div>
     );

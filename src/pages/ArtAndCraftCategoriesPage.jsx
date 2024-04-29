@@ -12,8 +12,11 @@ const ArtAndCraftCategoriesPage = () => {
     // console.log('Matching Data', allFilteredCategoriesData);
 
     return (
-        <div>
-            <h1>Filtered Data by SubCategory</h1>
+        <div className="bg-green-50 my-4 md:my-8 p-1 rounded-md">
+            <div className='py-2 md:py-4'>
+                <h1 className='text-center text-lg md:text-2xl font-bold text-[#101010]'>Art And Category Section</h1>
+                <p></p>
+            </div>
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3">
                     {
                         allFilteredCategoriesData.map(singleCategoryData => <ArtAndCraftCategoriesCard key={singleCategoryData._id} singleCategoryData={singleCategoryData}></ArtAndCraftCategoriesCard>)
