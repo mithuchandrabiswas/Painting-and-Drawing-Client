@@ -3,6 +3,7 @@ import { CiLocationOn } from "react-icons/ci";
 // import MyArtAndCraftCardDetails from "../pages/MyArtAndCraftCardDetails";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import MyArtAndCraftCardDetails from "../pages/MyArtAndCraftCardDetails";
 
 
 const MyArtAndCraftCard = ({ singleCraft, crafts, setCrafts }) => {
@@ -64,13 +65,16 @@ const MyArtAndCraftCard = ({ singleCraft, crafts, setCrafts }) => {
                 <p className="text-sm">{userName}</p>
                 <p className="text-red-600 text-sm">{price} <span className="text-xs text-gray-300">(Include all)</span></p>
             </div>
-            {/* <Link to={`/myartandcraftdetails/${_id}`} onClick={() => handleAllViewDetails(singleCraft)} CardDetails={<MyArtAndCraftCardDetails singleCraft={singleCraft}></MyArtAndCraftCardDetails>} className="btn btn-sm btn-secondary w-full">View Details</Link> */}
-            <div>
+            
+            <div className="flex justify-between">
+                <Link to={`/myartandcraftdetails/${_id}`}>
+                    <button className="btn btn-xs join-item">View Details</button>
+                </Link>
                 <Link to={`/updatecraft/${_id}`}>
-                    <button className="btn join-item">Edit</button>
+                    <button className="btn btn-xs join-item">Update</button>
                 </Link>
 
-                <button onClick={() => handleDelete(_id)} className="btn join-item">Delete</button>
+                <button onClick={() => handleDelete(_id)} className="btn btn-xs join-item">Delete</button>
             </div>
         </div>
     );

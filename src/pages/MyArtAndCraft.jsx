@@ -10,16 +10,27 @@ const MyArtAndCraft = () => {
 
     const filteredMyCrafts = loadedCrafts.filter(singleCraft => singleCraft.email == user.email);
     console.log(filteredMyCrafts);
-    const [crafts,setCrafts] = useState(filteredMyCrafts)
+    const [crafts, setCrafts] = useState(filteredMyCrafts)
 
     return (
         <div>
-            <h1>All Art And craft: {crafts.length}</h1>
-            <h2 className="text-center font-bold">Apply Dropdown list for filter based of customization</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3">
-                {
-                    crafts.map(singleCraft => <MyArtAndCraftCard key={singleCraft._id} singleCraft={singleCraft} crafts={crafts} setCrafts={setCrafts}></MyArtAndCraftCard>)
-                }
+            <div className="text-center">
+                <select name="" id="">
+                    <option value="">Sort by Customization</option>
+                    <option value="">Yes</option>
+                    <option value="">No</option>
+                </select>
+            </div>
+            <div className="bg-gray-100 p-4">
+                <div className='py-2 md:py-4'>
+                    <h1 className='text-center text-lg md:text-2xl font-bold text-[#101010]'>My all art and craft</h1>
+                    <p></p>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3">
+                    {
+                        crafts.map(singleCraft => <MyArtAndCraftCard key={singleCraft._id} singleCraft={singleCraft} crafts={crafts} setCrafts={setCrafts}></MyArtAndCraftCard>)
+                    }
+                </div>
             </div>
 
         </div>

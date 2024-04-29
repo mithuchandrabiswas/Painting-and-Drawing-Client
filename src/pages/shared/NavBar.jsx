@@ -83,7 +83,7 @@ const NavBar = () => {
                 </Link>
                 {user ? (
                     <div className="dropdown dropdown-hover">
-                        <div tabIndex={0}><img className="rounded-full w-10 h-10" src={user?.photoURL || "https://i.ibb.co/y0yrnYQ/1681283571946.jpg"} alt="User Avatar" /></div>
+                        <div tabIndex={0}><img className="rounded-full w-6 h-6" src={user?.photoURL || "https://i.ibb.co/y0yrnYQ/1681283571946.jpg"} alt="User Avatar" /></div>
                         <ul tabIndex={0} className="dropdown-content top-auto right-0 z-[4] menu p-2 shadow bg-base-100 rounded-box w-48">
                             <button className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
                                 {user?.displayName || 'User Name Not Found'}

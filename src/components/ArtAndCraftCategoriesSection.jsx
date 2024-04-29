@@ -8,9 +8,6 @@ const ArtAndCraftCategoriesSection = () => {
     const [subCategories, setSubCategories] = useState([]);
     const { loading, setLoading } = useContext(AuthContext);
 
-
-
-
     useEffect(() => {
         setLoading(true)
         fetch('https://painting-and-drawing-server.vercel.app/categories')
@@ -23,8 +20,11 @@ const ArtAndCraftCategoriesSection = () => {
     }, [setLoading]);
     // console.log(subCategories);
     return (
-        <div>
-            <h1>Art And Category Section: {subCategories.length}</h1>
+        <div className="bg-green-50 my-4 md:my-8 p-1 rounded-md">
+            <div className='py-2 md:py-4'>
+                <h1 className='text-center text-lg md:text-2xl font-bold text-[#101010]'>Art And Category Section</h1>
+                <p></p>
+            </div>
 
             {loading ? (
                 <div className="flex justify-center items-center gap-4">

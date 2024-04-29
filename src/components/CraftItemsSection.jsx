@@ -59,8 +59,11 @@ const CraftItemsSection = () => {
     const sliceMaxSixData = loadedData.slice(0, 6);
 
     return (
-        <div>
-            <h1 className='text-center'>Craft Items Section: {sliceMaxSixData.length}</h1>
+        <div className='bg-green-50 my-4 p-1 rounded-md'>
+            <div className='py-2 md:py-4'>
+                <h1 className='text-center text-lg md:text-2xl font-bold text-[#101010]'>Craft Items Section</h1>
+                <p></p>
+            </div>
             {loading ? (
                 <div className="flex justify-center items-center gap-4">
                     <span className="loading loading-bars loading-xs"></span>
