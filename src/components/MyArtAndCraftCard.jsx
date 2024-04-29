@@ -1,15 +1,56 @@
+import { useState } from "react";
 import { CiLocationOn } from "react-icons/ci";
-import MyArtAndCraftCardDetails from "../pages/MyArtAndCraftCardDetails";
+// import MyArtAndCraftCardDetails from "../pages/MyArtAndCraftCardDetails";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 
-const MyArtAndCraftCard = ({singleCraft}) => {
+const MyArtAndCraftCard = ({ singleCraft, crafts, setCrafts }) => {
     const { _id, image, craftName, subCategory, shortDescription, price, rating, customization, processingTime, stockStatus, email, userName } = singleCraft;
-    console.log(singleCraft);
+    // console.log(singleCraft);
 
-    const handleAllViewDetails = (singleCraft) => {
-        console.log(singleCraft);
+    // const [crafts,setCrafts] = useState([])
+
+    // const handleAllViewDetails = (singleCraft) => {
+    //     // console.log(singleCraft);
+    // }
+
+    const handleDelete = (id) => {
+        console.log(id);
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                console.log('delete confirm');
+                fetch(`https://painting-and-drawing-server.vercel.app/addcrafts/${id}`, {
+                    method: "DELETE",
+                })
+                    .then(res => res.json())
+                    .then((data) => {
+                        console.log(data);
+                        if (data.deletedCount > 0) {
+                            Swal.fire({
+                                title: "Deleted!",
+                                text: "Your craft has been deleted.",
+                                icon: "success"
+                            })
+                            const remaining = crafts.filter(craft => singleCraft._id !== _id);
+                            setCrafts(remaining);
+
+                        } else {
+                            console.log("No documents matched the query. Deleted 0 documents.");
+                        }
+                    })
+            }
+        });
     }
+
     return (
         <div className="shadow-sm space-y-1 py-4 px-2 border">
             <div className="relative">
@@ -23,7 +64,14 @@ const MyArtAndCraftCard = ({singleCraft}) => {
                 <p className="text-sm">{userName}</p>
                 <p className="text-red-600 text-sm">{price} <span className="text-xs text-gray-300">(Include all)</span></p>
             </div>
-            <Link to={`/myartandcraftdetails/${_id}`} onClick={() => handleAllViewDetails(singleCraft)} CardDetails={<MyArtAndCraftCardDetails singleCraft={singleCraft}></MyArtAndCraftCardDetails>} className="btn btn-sm btn-secondary w-full">View Details</Link>
+            {/* <Link to={`/myartandcraftdetails/${_id}`} onClick={() => handleAllViewDetails(singleCraft)} CardDetails={<MyArtAndCraftCardDetails singleCraft={singleCraft}></MyArtAndCraftCardDetails>} className="btn btn-sm btn-secondary w-full">View Details</Link> */}
+            <div>
+                <Link to={`/updatecraft/${_id}`}>
+                    <button className="btn join-item">Edit</button>
+                </Link>
+
+                <button onClick={() => handleDelete(_id)} className="btn join-item">Delete</button>
+            </div>
         </div>
     );
 };

@@ -1,6 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import Root from "../layout/Root";
-import ErrorPage from "../pages/ErrorPage"
+import ErrorPage from "../../ErrorPage"
 import Home from "../pages/Home";
 import AllArtAndCraft from "../pages/AllArtAndCraft";
 import Register from "../pages/Register";
@@ -13,6 +13,7 @@ import MyArtAndCraftCardDetails from "../pages/MyArtAndCraftCardDetails";
 import CraftItemsCardDetails from "../pages/CraftItemsCardDetails";
 import ArtAndCraftCategoriesPage from "../pages/ArtAndCraftCategoriesPage";
 import ArtAndCraftCategoriesCardDetails from "../pages/ArtAndCraftCategoriesCardDetails";
+import UpdateCraftPage from '../pages/UpdateCraftPage';
 
 const router = createBrowserRouter([
     {
@@ -47,6 +48,11 @@ const router = createBrowserRouter([
             {
                 path: "/addcraft",
                 element: <PrivateRoutes><AddCraftItem /></PrivateRoutes>,
+            },
+            {
+                path: "/updatecraft/:id",
+                element: <UpdateCraftPage />,
+                loader: ({ params }) => fetch(`https://painting-and-drawing-server.vercel.app/addcrafts/${params.id}`),
             },
             {
                 path: "/myart&craft",
