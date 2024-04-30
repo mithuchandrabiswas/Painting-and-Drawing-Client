@@ -2,12 +2,12 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../provider/AuthContextProvider";
 import Swal from 'sweetalert2';
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 
 const UpdateCraftPage = () => {
     const { user } = useContext(AuthContext);
     const loadedCraft = useLoaderData();
-    const { _id,image, craftName, subCategory, shortDescription, price, rating, customization, processingTime, stockStatus } = loadedCraft;
+    const { _id, image, craftName, subCategory, shortDescription, price, rating, customization, processingTime, stockStatus } = loadedCraft;
     const [customizationValue, setCustomizationValue] = useState(null);
     const [subCategoryValue, setSubCategoryValue] = useState(null);
     const [stockStatusValue, setStockStatusValue] = useState(null);
@@ -25,7 +25,7 @@ const UpdateCraftPage = () => {
         const processingTime = parseInt(form.processingTime.value);
         const stockStatus = stockStatusValue;
 
-        const updateCraftData = { image, craftName, subCategory, shortDescription, price, rating, customization, processingTime, stockStatus}
+        const updateCraftData = { image, craftName, subCategory, shortDescription, price, rating, customization, processingTime, stockStatus }
         console.log(updateCraftData);
 
         // Send CraftData to the server
@@ -46,6 +46,7 @@ const UpdateCraftPage = () => {
                         icon: 'success',
                         confirmButtonText: 'Cool'
                     });
+                    <Link to={'/myart&craft'}></Link>
                 }
             })
     }
@@ -99,14 +100,14 @@ const UpdateCraftPage = () => {
                             <label className="label">
                                 <span className="label-text">Subcategory Name</span>
                             </label>
-                            <select onChange={subCategoryChange} defaultValue={subCategory} name="sub_category" id="" className="px-2 py-1 rounded-md text-xs">
+                            <select onChange={subCategoryChange} name="sub_category" id="" className="px-2 py-1 rounded-md text-xs">
                                 <option value="">Select your sub-category</option>
-                                <option value="Landscape Painting">Landscape Painting</option>
-                                <option value="Portrait Drawing">Portrait Drawing</option>
-                                <option value="Watercolour Painting">Watercolour Painting</option>
-                                <option value="Oil Painting">Oil Painting</option>
-                                <option value="Charcoal Sketching">Charcoal Sketching</option>
-                                <option value="Cartoon Drawing">Cartoon Drawing</option>
+                                <option value="Landscape Painting" selected={subCategory === "Landscape Painting"}>Landscape Painting</option>
+                                <option value="Portrait Drawing" selected={subCategory === "Portrait Drawing"}>Portrait Drawing</option>
+                                <option value="Watercolour Painting" selected={subCategory === "Watercolour Painting"}>Watercolour Painting</option>
+                                <option value="Oil Painting" selected={subCategory === "Oil Painting"}>Oil Painting</option>
+                                <option value="Charcoal Sketching" selected={subCategory === "Charcoal Sketching"}>Charcoal Sketching</option>
+                                <option value="Cartoon Drawing" selected={subCategory === "Cartoon Drawing"}>Cartoon Drawing</option>
                             </select>
                         </div>
                         <div className="form-control w-full md:w-1/2">
@@ -139,10 +140,10 @@ const UpdateCraftPage = () => {
                             <label className="label">
                                 <span className="label-text">Customization</span>
                             </label>
-                            <select onChange={customizationChange} defaultValue={customization} name="" id="" className="px-2 py-1 rounded-md text-xs">
+                            <select onChange={customizationChange} name="" id="" className="px-2 py-1 rounded-md text-xs">
                                 <option value="">Select your customization option</option>
-                                <option value="Yes">Yes</option>
-                                <option value="No">No</option>
+                                <option value="Yes" selected={customization === "Yes"}>Yes</option>
+                                <option value="No" selected={customization === "No"}>No</option>
                             </select>
                         </div>
                     </div>
@@ -159,10 +160,10 @@ const UpdateCraftPage = () => {
                             <label className="label">
                                 <span className="label-text">Stock Status</span>
                             </label>
-                            <select onChange={stockStatusChange} defaultValue={stockStatus} name="" id="" className="px-2 py-1 rounded-md text-xs">
+                            <select onChange={stockStatusChange} name="" id="" className="px-2 py-1 rounded-md text-xs">
                                 <option value="">Stock Status</option>
-                                <option value="In stock">In stock</option>
-                                <option value="Made to Order">Made to Order</option>
+                                <option value="In stock" selected={stockStatus === "In stock"}>In stock</option>
+                                <option value="Made to Order" selected={stockStatus === "Made to Order"}>Made to Order</option>
                             </select>
                         </div>
                     </div>
