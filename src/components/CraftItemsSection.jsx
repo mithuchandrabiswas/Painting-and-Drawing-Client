@@ -37,6 +37,7 @@
 import { useContext, useEffect, useState } from 'react';
 import CraftItemsSectionCard from './CraftItemsSectionCard';
 import { AuthContext } from '../provider/AuthContextProvider';
+import { Fade } from 'react-awesome-reveal';
 
 const CraftItemsSection = () => {
     const [loadedData, setLoadedData] = useState([]);
@@ -61,8 +62,9 @@ const CraftItemsSection = () => {
     return (
         <div className='bg-green-50 my-4 p-1 rounded-md'>
             <div className='py-2 md:py-4'>
-                <h1 className='text-center text-lg md:text-2xl font-bold text-[#101010]'>Craft Items Section</h1>
-                <p></p>
+                <Fade>
+                    <h1 className='text-center text-lg md:text-2xl font-bold text-[#101010]'>Craft Items Section</h1>
+                </Fade>
             </div>
             {loading ? (
                 <div className="flex justify-center items-center gap-4">
