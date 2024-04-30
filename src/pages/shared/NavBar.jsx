@@ -58,11 +58,6 @@ const NavBar = () => {
                     <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] shadow bg-base-100 rounded w-40">
                         {navLinks}
                         <li>
-                            <Link to={'/register'}>
-                                <button className="btn btn-sm btn-outline text-sky-900 font-bold">Register</button>
-                            </Link>
-                        </li>
-                        <li>
                             {user ? (
                                 <div className="dropdown dropdown-hover">
                                     <div tabIndex={0}><img className="rounded-full w-8 h-8" src={user?.photoURL || "https://i.ibb.co/y0yrnYQ/1681283571946.jpg"} alt="User Avatar" /></div>
@@ -79,9 +74,14 @@ const NavBar = () => {
                                     </ul>
                                 </div>
                             ) : (
-                                <Link to='/login'>
-                                    <button className="btn btn-sm btn-ghost">Log In</button>
-                                </Link>
+                                <>
+                                    <Link to={'/register'}>
+                                        <button className="btn btn-xs btn-outline text-sky-900 font-bold text-xs">Register</button>
+                                    </Link>
+                                    <Link to='/login'>
+                                        <button className="btn btn-xs btn-outline text-sky-900 text-xs font-bold">Log In</button>
+                                    </Link>
+                                </>
                             )}
                         </li>
                     </ul>
@@ -122,7 +122,8 @@ const NavBar = () => {
                         </Link>
                         <Link to='/login'>
                             <button className="btn btn-xs btn-outline text-sky-900 text-xs font-bold">Log In</button>
-                        </Link></>
+                        </Link>
+                    </>
                 )}
             </div>
         </div>
