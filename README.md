@@ -10,3 +10,7 @@ ArtistryHub is an Art & Craft Store website specializing in the Painting and Dra
 - **Responsive Design:** Enjoy a seamless experience across all devices, including mobile phones, tablets, and desktops, ensuring accessibility wherever you are.
 - **Interactive Slider:** Engage with our interactive slider featuring stunning artwork and meaningful information, providing a captivating introduction to our platform.
 - **Explore Art & Craft Categories:** Dive into various art & craft categories, including painting and drawing, sculpture and modeling, textile arts, paper crafts & glass art, ceramics and pottery, and jute & wooden crafts, each offering unique and inspiring creations.
+
+## Additional Packages Used
+- **react-simple-typewriter**: Create a typewriter effect for dynamic text.
+- **react-awesome-reveal**: Add awesome animations to your React components.
